@@ -14,19 +14,20 @@ model Role {
 }
 
 model User {
-  id            String          @id @default(cuid())
-  name          String?
-  email         String          @unique
-  emailVerified DateTime?
-  image         String?
-  roleId        String          @default("cm4tz95kb0001utwsvcd1xiq0")
-  userRole      UserRole?       @default(ADMIN)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  accounts      Account[]
-  Authenticator Authenticator[]
-  sessions      Session[]
-  role          Role            @relation(fields: [roleId], references: [id])
+  id             String          @id @default(cuid())
+  name           String?
+  email          String          @unique
+  emailVerified  DateTime?
+  image          String?
+  roleId         String          @default("cm4tz95kb0001utwsvcd1xiq0")
+  userRole       UserRole?       @default(ADMIN)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  accounts       Account[]
+  Authenticator  Authenticator[]
+  sessions       Session[]
+  role           Role            @relation(fields: [roleId], references: [id])
+  hashedPassword String?
 }
 
 model Account {
